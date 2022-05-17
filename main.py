@@ -4,6 +4,9 @@ import random
 import sys
 import cv2
 import pyttsx3
+from timer import Timer
+
+
 
 
 # windowsize
@@ -45,13 +48,24 @@ start=True
 
 
 mouse_position=(0,0)
-ארץ=()
+tstop=[]
 space_touch=0
 
+
+start = time.time()
+print("hello")
+end = time.time()
+print(end - start)
 
 a=1
 while start:
  if a==1:   
+   t.start()
+   
+  #  timestart = time.time()
+   
+   
+  #  print(end - timestart)
    engine.setProperty('rate',200)  
    engine.say("perel,")  
    engine.runAndWait()
@@ -59,7 +73,7 @@ while start:
  screen.blit(bk_image,(0,0))
 #  screen.blit(write_image,(0,500))
  for event in pygame.event.get():
-    print (event)
+    
     if event.type==pygame.QUIT:
       start=False
       (805, 146)
@@ -68,6 +82,7 @@ while start:
         mouse_position = pygame.mouse.get_pos()
     elif event.type==pygame.KEYDOWN:
       if event.key==pygame.K_SPACE:
+        a=t.start()
         pygame.time.get_ticks()
         lottery_latter=random.choice(latters)
         latters_font =myfont.render(str(lottery_latter),True,(110,220,34))
@@ -80,6 +95,10 @@ while start:
  screen.blit(cursor_image,(mouse_position[0]-size_x_cursor/2,mouse_position[1]-10))
  
  
+ tstop.append(t.stop)
+ tstoplen=len(tstop)
+ if tstop[tstoplen]==120:
+   pygame.quit
  pygame.display.flip()
  
 # down=42
