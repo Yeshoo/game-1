@@ -70,10 +70,6 @@ with mp_hands.Hands(
     min_tracking_confidence=0.5) as hands:
   while cap.isOpened():
     success, image = cap.read()
-    if not success:
-      print("Ignoring empty camera frame.")
-      # If loading a video, use 'break' instead of 'continue'.
-      continue
 
     # To improve performance, optionally mark the image as not writeable to
     # pass by reference.
